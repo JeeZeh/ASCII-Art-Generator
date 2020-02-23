@@ -102,12 +102,16 @@ def setup():
     Path("./out/lum/").mkdir(parents=True, exist_ok=True)
     Path("./out/rgb/").mkdir(parents=True, exist_ok=True)
     filelist = os.listdir(os.path.dirname(os.path.realpath(__file__)) + "./in/")
+    if not filelist:
+        print('Setup complete, please add images to the "in" folder created in this directory')
+        exit()
     colour = input("Colour Mode? '1' - RGB, '2' - BW or '3' - both\n")
     resolution = input("Resolution? '1' - low, '2' - medium, '3' - high\n")
     background = input("Text/Background Colour? '1' - black/colour text on white, '2' - white/colour text on black\n")
 
 
 if __name__ == "__main__":
-    setup()   
+    setup()
+    
     for file in filelist:
         ascii(file, int(colour), int(resolution), int(background))
